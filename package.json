@@ -1,0 +1,15 @@
+{
+  "name": "queryScicat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "x.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-v3.0",
+  "dependencies": {
+    "request-promise": "^4.2.4"
+  }
+}
