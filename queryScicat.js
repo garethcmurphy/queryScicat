@@ -6,14 +6,20 @@ function stringEncode(fields) {
   return encodeURIComponent(fieldString);
 }
 
-async function ESSrequest(queryObject) {
-  var results;
-  const essURI = "https://scicatapi.esss.dk/api/v3/Datasets/fullquery";
-  const fields = { text: "NMX" };
-  const limits = { limit: "1" };
+function buildURI(essURI, fields, limits) {
+  
   const encodedFields = stringEncode(fields);
   const encodedLimits = stringEncode(limits);
   const finalURI = essURI + "?fields" + encodedFields + "&limits=" + encodedLimits;
+  return finalURI;
+}
+
+async function ESSrequest(queryObject) {
+  var results;
+  const essURI = "https://scicatapi.esss.dk/api/v3/Datasets/fullquery";
+  const fields = { text: "NMX" , type="raw"};
+  const limits = { limit: "1", "order": "size ASC" };
+  const finalURI=buildURI(essURI, fields, limits)
   var searchOptions = {
     method: "GET",
     uri: finalURI
